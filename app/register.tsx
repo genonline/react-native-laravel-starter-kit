@@ -1,6 +1,11 @@
-import { Text, View } from "react-native";
+import { useSession } from "@/context/authContext";
+import { Link } from "expo-router";
+import { Button, Text, View } from "react-native";
 
 export default function RegisterScreen() {
+  const { session } = useSession();
+  console.log("RegisterScreenSession: ", session);
+
   return (
     <View
       style={{
@@ -10,9 +15,10 @@ export default function RegisterScreen() {
       }}
     >
       <Text>Register Screen</Text>
-      {/* <Link href={"/register"} asChild>
-        <Button title="Register" />
-      </Link> */}
+      <Text>{session}</Text>
+      <Link href={"/(tabs)/profile"} asChild>
+        <Button title="settings" />
+      </Link>
     </View>
   );
 }
