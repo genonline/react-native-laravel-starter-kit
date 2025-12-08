@@ -47,7 +47,9 @@ export default function LoginScreen() {
   const toast = useToast();
 
   const loginSchema = z.object({
-    email: z.string().min(1, "Email is required").email(),
+    email: z
+      .email({ error: "This doesn't look like a proper email address" })
+      .min(1, "Email is required"),
     password: z.string().min(1, "Password is required"),
   });
 
@@ -78,9 +80,11 @@ export default function LoginScreen() {
         reset();
         // set session with token
         setSession(response);
+        console.log("onSubmit.then(): ", response);
       })
       .catch((error) => {
         if (error.validationErrors) {
+          console.log("onSubmit.validationErrors: ", error);
           // set form validation errors
           for (const key in error.validationErrors) {
             setError(key as keyof LoginSchemaType, {
@@ -112,7 +116,7 @@ export default function LoginScreen() {
             },
           });
           // non validation errors
-          throw Error("Major Server Error - Login", error);
+          //   throw Error("Major Server Error - Login", error);
         }
       });
   };
@@ -144,6 +148,7 @@ export default function LoginScreen() {
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input>
                   <InputField
+                    aria-label="username"
                     placeholder="email@example.com"
                     value={value}
                     onChangeText={onChange}
@@ -185,6 +190,7 @@ export default function LoginScreen() {
                 <Input>
                   <InputField
                     type={showPassword ? "text" : "password"}
+                    aria-label="password"
                     placeholder="Password"
                     value={value}
                     onChangeText={onChange}
