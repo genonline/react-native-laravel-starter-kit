@@ -27,11 +27,21 @@ const InitialLayout = () => {
   return (
     <Stack>
       <Stack.Protected guard={!!session}>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(tabs)"
+          options={{ title: "Back", headerShown: false }}
+        />
       </Stack.Protected>
       <Stack.Protected guard={!session}>
-        <Stack.Screen name="login" options={{ headerShown: false }} />
-        <Stack.Screen name="register" />
+        <Stack.Screen
+          name="login"
+          options={{ title: "Log in", headerShown: false }}
+        />
+        <Stack.Screen name="register" options={{ title: "Sign up" }} />
+        <Stack.Screen
+          name="forgot-password"
+          options={{ title: "Forgot Password" }}
+        />
       </Stack.Protected>
     </Stack>
   );

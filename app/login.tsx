@@ -47,9 +47,7 @@ export default function LoginScreen() {
   const toast = useToast();
 
   const loginSchema = z.object({
-    email: z
-      .email({ error: "This doesn't look like a proper email address" })
-      .min(1, "Email is required"),
+    email: z.email({ error: "Invalid email" }),
     password: z.string().min(1, "Password is required"),
   });
 
