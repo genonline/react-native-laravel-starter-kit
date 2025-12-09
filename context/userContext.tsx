@@ -7,7 +7,7 @@ import type { User } from "@/types/user";
 import { useQuery } from "@tanstack/react-query";
 import { createContext, PropsWithChildren, useContext } from "react";
 import { View } from "react-native";
-import { useSession } from "./authContext";
+import { useSession } from "./sessionContext";
 
 const UserContext = createContext<User | null>(null);
 

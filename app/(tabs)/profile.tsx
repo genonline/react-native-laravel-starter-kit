@@ -34,7 +34,7 @@ import {
   useToast,
 } from "@/components/ui/toast";
 import { VStack } from "@/components/ui/vstack";
-import { useSession } from "@/context/authContext";
+import { useSession } from "@/context/sessionContext";
 import { useUser } from "@/context/userContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";

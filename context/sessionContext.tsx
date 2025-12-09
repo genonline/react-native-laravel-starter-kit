@@ -5,7 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useQueryClient } from "@tanstack/react-query";
 import { createContext, type PropsWithChildren, useContext } from "react";
 
-const AuthContext = createContext<{
+const SessionContext = createContext<{
   setSession: (token: string) => void;
   signOut: () => void;
   session?: string | null;
@@ -18,7 +18,7 @@ const AuthContext = createContext<{
 });
 
 export function useSession() {
-  const value = useContext(AuthContext);
+  const value = useContext(SessionContext);
   if (process.env.NODE_ENV !== "production") {
     if (!value) {
       throw new Error("useSession must be wrapped in a <SessionProvider />");
@@ -34,7 +34,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
   const queryClient = useQueryClient();
 
   return (
-    <AuthContext.Provider
+    <SessionContext.Provider
       value={{
         setSession: (token) => {
           setSession(token);
@@ -52,6 +52,6 @@ export function SessionProvider({ children }: PropsWithChildren) {
       }}
     >
       {children}
-    </AuthContext.Provider>
+    </SessionContext.Provider>
   );
 }

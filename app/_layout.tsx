@@ -1,6 +1,6 @@
 import LoadingMessageScreen from "@/components/LoadingMessageScreen";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { SessionProvider, useSession } from "@/context/authContext";
+import { SessionProvider, useSession } from "@/context/sessionContext";
 import { ThemeSwitcherProvider } from "@/context/themeSwitcherContext";
 import { UserProvider } from "@/context/userContext";
 import "@/global.css";
@@ -21,7 +21,7 @@ const InitialLayout = () => {
   const { session, isLoading } = useSession();
 
   if (isLoading) {
-    return <LoadingMessageScreen msg="Loading Token" />;
+    return <LoadingMessageScreen msg="Loading User Account" />;
   }
 
   return (

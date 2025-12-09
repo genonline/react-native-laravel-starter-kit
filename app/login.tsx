@@ -22,7 +22,7 @@ import {
   useToast,
 } from "@/components/ui/toast";
 import { VStack } from "@/components/ui/vstack";
-import { useSession } from "@/context/authContext";
+import { useSession } from "@/context/sessionContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as Device from "expo-device";
 import { Link } from "expo-router";
@@ -78,11 +78,9 @@ export default function LoginScreen() {
         reset();
         // set session with token
         setSession(response);
-        console.log("onSubmit.then(): ", response);
       })
       .catch((error) => {
         if (error.validationErrors) {
-          console.log("onSubmit.validationErrors: ", error);
           // set form validation errors
           for (const key in error.validationErrors) {
             setError(key as keyof LoginSchemaType, {
