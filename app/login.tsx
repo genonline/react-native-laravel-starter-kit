@@ -114,7 +114,7 @@ export default function LoginScreen() {
             },
           });
           // non validation errors
-          //   throw Error("Major Server Error - Login", error);
+          throw Error("Major Server Error - Login", error);
         }
       });
   };
