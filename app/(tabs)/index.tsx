@@ -7,7 +7,7 @@ import { VStack } from "@/components/ui/vstack";
 import { useUser } from "@/context/userContext";
 import { View } from "react-native";
 
-export default function Index() {
+export default function IndexScreen() {
   const user = useUser();
   return (
     <View className="m-3 gap-3">
