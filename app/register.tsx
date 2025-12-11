@@ -102,8 +102,6 @@ export default function RegisterScreen() {
         reset();
         // set session with token
         setSession(response);
-        // redirct to dashboard
-        router.replace("/");
       })
       .catch((error) => {
         if (error.validationErrors) {
